@@ -23,36 +23,22 @@ function bottoneGioca() {
     } else if (difficulty === "Difficile") {
         numeroCaselle = 49;
     }
-    console.log(numeroCaselle);
+   
+    for (let i = 0; i < numeroCaselle; i++) {
+        const square = document.createElement("div");
+        const squaresPerRow = Math.sqrt(numeroCaselle); 
 
-    const grigliaPiena = creaGriglia(numeroCaselle);
+        square.classList.add("squares");
+        square.textContent = (i+1).toString();
+        square.style.flexBasis = `calc(100% / ${squaresPerRow})`;
 
-    for (i = 0; i < grigliaPiena.length; i++) {
-        contenitoreGioco.append(grigliaPiena[i]);
-        console.log(grigliaPiena);
+        square.addEventListener("click", function () {
+            square.classList.toggle("toggleColor");
+            
+        })
+        contenitoreGioco.append(square);
     }
-
 };
 
-function casellaSingola(contenuto, numeroCaselle) {
-    const div = document.createElement("div");
-    const casellePerRiga = Math.sqrt(numeroCaselle);
-    div.classList.add("squares");
-    div.style.flexBasis = `calc(100% / ${casellePerRiga})`;
-    console.log(casellePerRiga);
 
-    return div;
-}
-
-function creaGriglia(numeroCaselle) {
-    const griglia = [];
-
-    for (i = 0; i < numeroCaselle; i++) {
-
-        const setCasella = casellaSingola("numero " + (i + 1), numeroCaselle);
-
-        griglia.push(setCasella);
-    }
-    return griglia;
-}
 
