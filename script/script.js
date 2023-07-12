@@ -8,9 +8,6 @@ const contenitoreGioco = document.querySelector(".container-small");
 
 btnPlay.addEventListener("click", bottoneGioca);
 
-let rigaCaselle = 0
-
-
 function bottoneGioca() {
     contenitoreGioco.innerHTML = "";
     const difficulty = document.getElementById("select-level").value;
@@ -23,7 +20,12 @@ function bottoneGioca() {
     } else if (difficulty === "Difficile") {
         numeroCaselle = 49;
     }
-   
+   creaCaselle();
+    
+};
+
+
+function creaCaselle () {
     for (let i = 0; i < numeroCaselle; i++) {
         const square = document.createElement("div");
         const squaresPerRow = Math.sqrt(numeroCaselle); 
@@ -38,7 +40,4 @@ function bottoneGioca() {
         })
         contenitoreGioco.append(square);
     }
-};
-
-
-
+}
